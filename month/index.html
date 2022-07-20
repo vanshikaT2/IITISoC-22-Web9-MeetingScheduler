@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Month</title>\
+    <link rel="stylesheet" href="app.css">
+    <script src="https://kit.fontawesome.com/16b8733e74.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+</body>
+<!--NAVBAR-->
+
+<nav>
+    <div class="navbar">
+        <div class="nav-logo"><img src="logo.png"></div>
+    <div class="name"><h1>710 Calendar</h1></div>
+    <div class="side_nav"><ul>
+        <li>
+            <div  class="search">
+            <input type="text" placeholder="Search">
+            <button type="submit>"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        </li>
+       
+        <li class="type">
+            <ul>
+                <select id="list" onchange="window.location.href=this.value">
+                    <option value="file:///C:/My%20Files/Projects/iitisoc%20project/day/index.html">DAY</option>
+                    <option value="file:///C:/My%20Files/Projects/iitisoc%20project/week/index.html">WEEK</option>
+                    <option value="file:///C:/My%20Files/Projects/iitisoc%20project/month/index.html">MONTH</option>
+                </select>
+            </ul>
+        </li>
+        <li  class="notification">
+            <i class="fa-solid fa-bell fa-2x"></i>
+        </li>
+        <li class="profile">
+            <div class="profile-logo"><i class="fa-solid fa-user fa-2x"></i>
+            <h1>Account</h1>
+        </div>
+        </li>
+    </ul>
+</div>
+</div>
+</nav>
+
+<!--NAVBAR ENDS-->
+
+<!--CALENDAR-->
+     <!-- <div class="container"> -->
+        <div class="container">
+        <div class="calendar">
+            <div class="month">
+              <i class="fas fa-angle-left prev"></i>
+              <div class="date">
+                <h1></h1>
+                <p></p>
+              </div>
+              <i class="fas fa-angle-right next"></i>
+              <div class="create_event"><a href="file:///C:/My%20Files/Projects/iitisoc%20project/add_event/index.html">Create an Event</a></div>
+            </div>
+            <div class="weekdays">
+              <div>Sun</div>
+              <div>Mon</div>
+              <div>Tue</div>
+              <div>Wed</div>
+              <div>Thu</div>
+              <div>Fri</div>
+              <div>Sat</div>
+            </div>
+            <div class="days">
+                <i class="fa-solid fa-circle-small"></i>
+                
+            </div>
+          </div>
+
+            <div class="events_of_day">
+                <div class="type_of_event">
+                    <select id="list">
+                        <option value="Day">One-on-One</option>
+                        <option value="Week">Group</option>
+                        <option value="MONTH">Both
+                        </option>
+                    </select>
+                </div>
+                <div class="date_of_event">
+                    <h1>18 JULY 2022</h1>
+                </div>
+                <div class="events">
+                    <ul>
+                        <li>
+                           <div class="one_on_one"><i class="fa-solid fa-circle-small"></i></div>
+                            <div class="event_name one-on-one">BLAH!!!!</div>
+                            <div class="start-time">11.00 a.m</div>
+                        </li>
+                        <li>
+                            <div class="group"><i class="fa-solid fa-circle-small"></i></div>
+                            <div class="event_name group">BLAH!!!!</div>
+                            <div class="start-time">11.00 a.m</div>
+                            
+                        </li>
+                        <li>
+                            <div class="event_name both">BLAH!!!!</div>
+                            <div class="start-time">11.00 a.m</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <!-- </div> -->
+    
+        <script src="app.js"></script>
+    
+</body>
+</html>

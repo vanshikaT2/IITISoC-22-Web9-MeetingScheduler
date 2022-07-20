@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+}
+
+.create_event{
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    /* text-align: center; */
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto Slab', serif;
+}
+
+.one-on-one{
+    width: 1000px;
+    height: 180px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin: 20px auto;
+    /*padding: 0 90px 0 90px;*/
+    border: 5px black solid;
+    border-radius: 40px;
+
+}
+
+.img{
+    width: 150px;
+    height:150px;
+    background-color: #e9c46a;
+    border-radius: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo_description{
+    width: 70%;
+    padding: 20px 20px;
+    display: flex;
+    
+}
+
+.description{
+    padding-left: 20px;
+    width: 400px;
+}
+
+img{
+    height: 80px;
+}
+
+#button-1{
+    height: 40px
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.button button{
+    width: 100px;
+    border-radius: 40px;
+    background-color:#48cae4;
+    /* transition: background-color 2s 1ms; */
+}
+
+.button button:hover{
+    width: 120px;
+    background-color: aliceblue;
+    font-weight: bold;
+}
+
+.fa-solid{
+    color: black;
+    
+}
+
+.Group{
+    width: 1000px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    margin: 20px auto;
+    /*padding: 0 90px 0 90px;*/
+    border: 5px black solid;
+    border-radius: 40px;;
+}
+/*navbar*/
+nav{
+    width: 100%;
+    height: 10vh;
+    padding: 10px 70px 30px 30px;
+}
+
+.navbar{
+    display: flex;
+    width: 100%;
+}
+
+.nav-logo{
+    width: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+}
+
+.side_nav{
+    width: 72%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav ul li{
+    margin: 0 5px;
+    display: inline-block;
+    text-align: right;
+}
+
+.profile{
+    display: flex;
+}
+
+.profile-logo{
+    display: flex;
+    align-items: center;
+}
+
+.search{
+    /* width: 20%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* background-color: rgb(142, 151, 159); */
+    border: 2px black solid;
+    border-radius: 60px;
+    padding: 0 5px;
+}
+
+.search input{
+    background: transparent;
+    flex: 1;
+    border: 0;
+    outline: none;
+    padding: 10px 0;
+}
+
+.search button i{
+    width: 20px;
+}
+
+.search button{
+    border-radius: 45px;
+    border: 0;
+}
+
+/* navbar ends */
+
+
+
+
+
+

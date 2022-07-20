@@ -1,0 +1,43 @@
+.events_of_day{
+    width: 90px;
+    height: 65px;
+    border: 1px black solid;
+    display: flex;
+}
+
+.events_of_day ul{
+    padding: 0;
+    padding-left: 16%;
+    width: 100%;
+    height: 100%;
+}
+
+.events_of_day ul .one-on-one{
+    margin: 0;
+    color: #0e7eb7;
+     width: 80%;
+     
+}
+
+.events_of_day ul .group{
+    margin: 0;
+    color: rgb(17, 237, 25);
+     width: 80%;
+     
+}
+
+.events_of_day ul .both{
+    margin: 0;
+    color: rgb(231, 184, 11);
+     width: 80%;
+     
+}
+
+.events_of_day ul li div{
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: xx-small;
+    color: black;
+}
