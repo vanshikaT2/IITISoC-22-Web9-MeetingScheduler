@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <title>create_event</title>
+</head>
+
+<body>
+
+    <div class="event_form" id="eventid">
+        <form action="/contact" method="POST">
+            <div class="event_name">
+                <!-- <label for="event_name">Event name</label>
+        <br> -->
+                <input type="text" placeholder="Add a title" id="event_name" name="eventname">
+            </div>
+            <div class="date_time">
+                <div class="date">
+                    <input type="date" id="date" name="calanderdate">
+                </div>
+                <div class="time">
+                    <input type="time" name="time1"> - <input type="time" name="time2">
+                </div>
+            </div>
+            <div>
+                <div class="add_guest">
+                    <input type="email" placeholder="Add a Guest" id="add_guest" name="email">
+                </div>
+                <!-- <label for="description">Add a Description<br> -->
+
+                <textarea placeholder="Add a description of Event" name="description"></textarea>
+
+
+            </div>
+
+            <button type="submit" class="btn">submit</button>
+
+        </form>
+    </div>
+
+
+
+
+
+    <script src="../jq/jquery.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.js" type="text/javascript"></script>
+</body>
+
+</html>

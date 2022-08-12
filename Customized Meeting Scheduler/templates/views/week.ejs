@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Week</title>
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.2.0/tailwind.min.css'>
+        <!-- <link rel="stylesheet" href="week.css"> -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        <style>
+            @media (min-width: 576px) {
+                .col-1 {
+                    width: 57.6px;
+                    font-size: 2rem;
+                }
+            }
+
+            .col-1 {
+                width: 20%;
+                height: 2%;
+                border-left: 1px solid black;
+                border-right: 1px solid black;
+                margin-bottom: 0.1rem;
+            }
+
+            /* .col-9 {
+                width: 75%;
+            }
+
+            .col-3 {
+                margin: 2%;
+            } */
+
+            .bordered {
+                border: 1px solid black;
+            }
+
+            .row {
+                --bs-gutter-x: 0;
+                display: flex;
+            }
+
+            .self-center {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .month-year {
+                display: flex;
+                height: 10%;
+            }
+
+            .event_name {
+                width: 50%;
+                margin: 2% 0;
+                font-weight: 400;
+                font-size: medium;
+                width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                color: black;
+                text-transform: capitalize;
+            }
+
+            .start-time {
+                font-weight: 400;
+                font-size: medium;
+                display: flex;
+                justify-content: flex-end;
+                margin: 2% 0;
+                margin-right: 0;
+                width: 50%;
+
+            }
+
+            .one-on-one {
+                color: #0e7eb7;
+            }
+
+            .group {
+                color: rgb(161, 211, 10);
+            }
+
+            .events ul li {
+                display: flex;
+            }
+
+            .events_of_day {
+                width: 100%;
+                height: 90vh;
+                padding-left: 2%;
+            }
+
+            .type_of_event {
+                margin-bottom: 25px;
+                ;
+            }
+
+            .type_of_event select {
+                height: 40px;
+                width: 200px;
+                border: 2% solid black;
+                border-radius: 10px;
+
+                font-size: 16px;
+            }
+
+            .type_of_event select:hover {
+                height: 42px;
+                width: 210px;
+                border: 2% solid black;
+                border-radius: 10px;
+
+                font-size: 16px;
+            }
+
+            .container {
+                width: 100%;
+                display: flex;
+            }
+        </style>
+    </head>
+
+    <body style="background-color: #ecf6fb;">
+
+        <%- include("../partials/navbar"); %>
+
+            <div class="container">
+
+                <div class="row" style="width: 100%;">
+                    <div class="col-9" id="app">
+                        <div>
+                            <div class="justify-content-center">
+                                <span>
+                                    {{ selectedDate.actual }}
+                                </span>
+                            </div>
+                            <div>
+                                <div class="month-year" style="height: 50px; padding: 10px; width: 100%;">
+                                    <h4>{{ month.join('/') }} {{ year.join('/') }}</h4>
+                                </div>
+                            </div>
+
+                            <div class="row text-center" style="margin:0px; width: 100%; min-width: 576px;">
+                                <div class="col-1" style="border: none;"></div>
+                                <div class="col-1 bordered" style="height: 2%;">
+                                    <span class="self-center text-sm">MON</span>
+                                </div>
+                                <div class="col-1 bordered">
+                                    <span class="self-center text-sm">TUE</span>
+                                </div>
+                                <div class="col-1 bordered">
+                                    <span class="self-center text-sm">WED</span>
+                                </div>
+                                <div class="col-1 bordered">
+                                    <span class="self-center text-sm">THU</span>
+                                </div>
+                                <div class="col-1 bordered">
+                                    <span class="self-center text-sm">FRI</span>
+                                </div>
+                                <div class="col-1 bordered">
+                                    <span class="self-center text-sm">SAT</span>
+                                </div>
+                                <div class="col-1 bordered">
+                                    <span class="self-center text-sm">SUN</span>
+                                </div>
+                                <div class="col-1" style="border: none;"></div>
+
+                            </div>
+                            <div class="row" style="min-width: 576px; margin: 0px;">
+                                <div class="col-1 justify-content-center" v-on:click="getPreviousWeek()"
+                                    style="margin-left: 0; border-left: 0;">
+                                    <div class="justify-content-center" tabindex="0" role="button" aria-pressed="false"
+                                        style="height: 60px; width: 100%; display: flex;">
+                                        <div class="flex justify-content-center">
+                                            <!-- <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                style="transform: rotate(90deg);">
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path>
+              </svg> -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                                fill="currentColor" class="bi bi-arrow-left-circle-fill"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div v-for="(day, index) in week" v-bind:key="index"
+                                    class="col-1 d-flex flex-row justify-content-center text-center" v-bind:class="{ 
+                              'bg-blue-800 text-blue-300 hover:bg-blue-800 hover:text-blue-300 cursor-not-allowed': day.active && !day.currentDayToday, 
+                              'bg-blue-200 text-blue-800 hover:bg-blue-800 hover:text-blue-300 cursor-pointer': !day.active && !day.currentDayToday,
+                              'bg-blue-900 text-blue-200 hover:bg-blue-900 hover:text-blue-100 cursor-not-allowed': day.currentDayToday
+                            }" v-on:click="setActiveDay(day)" style="height: 90vh;">
+                                    <div class="d-flex flex-row" style="height: 0.1rem;">{{ day.ordinal }}</div>
+                                </div>
+                                <div class="col-1 justify-content-center" v-on:click="getNextWeek()"
+                                    style="border-right: 0;">
+                                    <div class="justify-content-center" tabindex="0" role="button" aria-pressed="false"
+                                        style="height: 60px; width: 100%; display: flex; border-right: 0;">
+                                        <div class="flex justify-content-center">
+                                            <!-- <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                style="transform: rotate(-90deg);">
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path>
+              </svg> -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                                fill="currentColor" class="bi bi-arrow-right-circle-fill"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="events_of_day">
+                            <div class="type_of_event">
+                                <select id="list">
+                                    <option value="Day">One-on-One</option>
+                                    <option value="Week">Group</option>
+                                    <option value="MONTH">Both
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="events">
+                                <ul>
+                                    <% createEvent.forEach(function(harsh){%>
+
+                                        <% let harshevent_type=harsh.event_type; %>
+
+                                            <li>
+                                                <%if(harshevent_type==="Multiple"){%>
+
+                                                    <div class="group" style="color:greenyellow"><i
+                                                            class="fa-solid fa-circle-small"></i></div>
+                                                    <%}else{%>
+                                                        <div class="one_on_one" style="color:blue"><i
+                                                                class="fa-solid fa-circle-small"></i></div>
+                                                        <%}%>
+
+
+                                                            <div class="event_name one-on-one">
+                                                                <%= harsh.eventname %>
+                                                            </div>
+                                                            <div class="start-time">
+                                                                <%= harsh.time1 %>
+                                                            </div>
+                                            </li>
+
+                                            <%})%>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- partial -->
+
+
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script>
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+            <script src="./script.js"></script>
+
+            <script>
+                new Vue({
+                    el: '#app',
+                    data: {
+                        i: 0,
+                        year: [],
+                        month: [],
+                        week: [],
+                        selectedDate: {}
+                    },
+                    created() {
+                        this.getWeekBlock();
+                    },
+                    watch: {
+                        selectedDate() {
+                            console.log(this.selectedDate.actual.toISOString().split("T")[0]);
+                        }
+                    },
+                    methods: {
+                        // Helper Functions:
+                        getOrdinalNum(n) {
+                            return n;
+                        },
+                        addDays(date, days) {
+                            var result = new Date(date);
+                            result.setDate(result.getDate() + days);
+                            return result;
+                        },
+                        getWeekBlock() {
+                            let today = new Date();
+                            let prevMonday = new Date();
+
+                            let n = today.getDay();
+
+                            prevMonday.setDate(today.getDate() - (n - 1) + (this.i * 7));
+
+                            this.prevMonday = prevMonday;
+
+                            // Flush this.week to empty Array:
+                            this.week = [];
+
+                            this.month = [];
+
+                            this.year = [];
+
+                            for (var i = 0; i < 7; i++) {
+                                let day = this.addDays(this.prevMonday, i);
+
+                                let currentDayToday = false;
+                                if (today.getTime() == day.getTime()) {
+                                    currentDayToday = true;
+                                }
+
+                                this.week.push({
+                                    ordinal: this.getOrdinalNum(day.getDate()),
+                                    active: false,
+                                    currentDayToday: currentDayToday,
+                                    actual: new Date(day.setHours(0, 0, 0, 0)),
+                                });
+
+                                this.month.indexOf(day.toLocaleString('default', { month: 'long' })) === -1 ? this.month.push(day.toLocaleString('default', { month: 'long' })) : this.month;
+                                this.year.indexOf(day.toLocaleString('default', { year: 'numeric' })) === -1 ? this.year.push(day.toLocaleString('default', { year: 'numeric' })) : this.year;
+                            }
+                        },
+                        getNextWeek() {
+                            this.i++;
+                            this.getWeekBlock();
+                        },
+                        getPreviousWeek() {
+                            this.i--;
+                            this.getWeekBlock();
+                        },
+                        setActiveDay(activeDay) {
+                            this.selectedDate = activeDay;
+                            this.week.forEach((day) => {
+                                if (activeDay == day) {
+                                    day.active = true;
+                                } else {
+                                    day.active = false;
+                                }
+                            });
+                        },
+                    },
+                });
+            </script>
+
+            <%- include("../partials/footer"); %>
+    </body>
+
+</html>
