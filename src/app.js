@@ -76,7 +76,7 @@ app.get("/", (req, res) => {          //home page pe jo bhi request ayegi vo yah
     var currentday = ourdate.getMonth() + 1;
 
     User.find({}, function (err, value) {
-        res.render("index", { createEvent: value });
+        res.render("login", { createEvent: value });
 
     });
 
