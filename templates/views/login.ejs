@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id"
+            content="592188886867-mqravv7ttd1gtcqn6pb25nlpfg1i63c8.apps.googleusercontent.com">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>login page🎅🏿</title>
+    </head>
+
+    <body>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Poppins', sans-serif;
+            }
+
+            html {
+                background: url("https://hrdailyadvisor.blr.com/app/uploads/sites/3/2018/03/Schedule-1.jpg");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: 600px;
+
+            }
+
+            body {
+                display: grid;
+                place-items: center;
+                text-align: center;
+                background-size: cover;
+
+
+
+
+            }
+
+            .content {
+                width: 370px;
+
+                border-radius: 10px;
+                padding: 40px 30px;
+                margin-top: 100px;
+                margin-right: 70%;
+                box-shadow: -3px -3px 9px black,
+                    3px 3px 7px #000000;
+
+            }
+
+
+            .content .text {
+                font-size: 25px;
+                font-weight: 600;
+                margin-bottom: 35px;
+                color: black;
+            }
+
+            .content .field {
+                height: 50px;
+                width: 100%;
+                display: flex;
+                position: relative;
+            }
+
+            .field input {
+                height: 100%;
+                width: 100%;
+                padding-left: 45px;
+                font-size: 18px;
+                outline: none;
+                border: none;
+                color: black;
+                border: 1px solid black;
+                border-radius: 8px;
+                background: rgba(105, 105, 105, 0);
+
+            }
+
+
+            .field input::placeholder {
+                color: #000000;
+            }
+
+            .field:nth-child(2) {
+                margin-top: 20px;
+            }
+
+            .field span {
+                position: absolute;
+                width: 50px;
+                line-height: 50px;
+                color: #ffffff;
+            }
+
+
+
+            button {
+                margin: 25px 0 0 0;
+                width: 45%;
+                height: 50px;
+                color: rgb(238, 226, 226);
+                font-size: 18px;
+                font-weight: 600;
+                border: 2px solid rgba(255, 255, 255, 0.438);
+                border-radius: 8px;
+                background: rgba(105, 105, 105, 0);
+                margin-top: 40px;
+                outline: none;
+                cursor: pointer;
+
+            }
+
+            button a {
+                text-decoration: none;
+            }
+
+            .content .or {
+                color: rgba(255, 255, 255, 0.733);
+                margin-top: 9px;
+            }
+
+            .icon-button {
+                margin-top: 15px;
+            }
+
+            .icon-button span {
+                padding-left: 17px;
+                padding-right: 17px;
+                padding-top: 6px;
+                padding-bottom: 6px;
+                color: rgba(244, 247, 250, 0.795);
+                border-radius: 5px;
+                line-height: 30px;
+                background: rgba(255, 255, 255, 0.164);
+                backdrop-filter: blur(10px);
+            }
+
+            .icon-button span.facebook {
+                margin-right: 17px;
+
+            }
+
+            button:hover,
+            .icon-button span:hover {
+                background-color: #babecc8c;
+            }
+
+            .sing-in-out {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        </style>
+
+
+        <div class="content">
+            <div class="text">Login Form</div>
+            <form action="#">
+                <div class="field">
+                    <span class="fa fa-user"></span>
+                    <input type="text" placeholder="Email Id" required>
+
+                </div>
+                <div class="field">
+                    <span class="fa fa-lock"></span>
+                    <input type="password" placeholder="Password">
+
+                </div>
+
+                <div class="sing-in-out">
+                    <button>
+                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    </button>
+                    <button>
+                        <a href="#" onclick="signOut();" style="margin-top: 25px;">Sign out</a>
+                    </button>
+                </div>
+                <!-- <div class="or">Or</div>
+           <div class="icon-button">
+       
+             <span class="facebook"><i class="fa fa-facebook"></i>  Facebook</span>
+       
+             <span><i class="fa fa-google"></i>  Google</span> -->
+
+
+        </div>
+        </form>
+        </div>
+
+
+        <!-- <a href="#" onclick="signOut();">Sign out</a> -->
+
+        <script>
+            function onSignIn(googleUser) {
+                var id_token = googleUser.getAuthResponse().id_token;
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/login');
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onload = function () {
+                    console.log('Signed in as: ' + xhr.responseText);
+                    if (xhr.responseText == 'success') {
+                        signOut();
+                        location.assign('/day')
+                    }
+                };
+                xhr.send(JSON.stringify({ token: id_token }));
+            }
+        </script>
+        <script>
+            function signOut() {
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                    console.log('User signed out.');
+                });
+            }
+        </script>
+    </body>
+
+</html>

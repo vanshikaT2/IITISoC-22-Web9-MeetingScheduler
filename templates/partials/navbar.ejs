@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <!-- <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        <link href="css/clock.css" rel="stylesheet">
+        <link href="css/navbar.css" rel="stylesheet">
+        <title>Document</title>
+        <style>
+            #hover06 figure img {
+                -webkit-transform: rotate(-30deg) scale(1);
+                transform: rotate(0) scale(1);
+                -webkit-transition: .3s ease-in-out;
+                transition: .3s ease-in-out;
+            }
+
+            #hover06 figure:hover img {
+                -webkit-transform: rotate(0) scale(1);
+                transform: rotate(-30deg) scale(1);
+            }
+
+            .column {
+                margin: 15px 15px 0;
+                padding: 0;
+            }
+
+            .column:last-child {
+                padding-bottom: 60px;
+            }
+
+            .column::after {
+                content: '';
+                clear: both;
+                display: block;
+            }
+
+            .column div {
+                position: relative;
+                float: left;
+                width: 300px;
+                height: 200px;
+                margin: 0 0 0 0;
+                padding: 0;
+            }
+
+            .column div:first-child {
+                margin-left: 0;
+            }
+
+            .column div span {
+                position: absolute;
+                bottom: -20px;
+                left: 0;
+                z-index: -1;
+                display: block;
+                width: 300px;
+                margin: 0;
+                padding: 0;
+                color: #444;
+                font-size: 18px;
+                text-decoration: none;
+                text-align: center;
+                -webkit-transition: .3s ease-in-out;
+                transition: .3s ease-in-out;
+                opacity: 0;
+            }
+
+            figure {
+                width: 35px;
+                height: 35px;
+                margin: 0;
+                padding: 0;
+                background: #fff;
+                overflow: hidden;
+            }
+
+            figure:hover+span {
+                bottom: -36px;
+                opacity: 1;
+            }
+        </style>
+    </head>
+
+    <body>
+
+
+
+
+        <!-- navbar: starts -->
+        <div class="d-flex justify-content-between"
+            style="height: 10vh; margin: 0; margin-left: 1.5%; margin-right: 1.5%;">
+            <!-- left menu-button: contains create, sort by, profile, notifications -->
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"
+                style="margin-top: 2vh; margin-bottom: 2vh;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-menu-button-wide-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M1.5 0A1.5 1.5 0 0 0 0 1.5v2A1.5 1.5 0 0 0 1.5 5h13A1.5 1.5 0 0 0 16 3.5v-2A1.5 1.5 0 0 0 14.5 0h-13zm1 2h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1zm9.927.427A.25.25 0 0 1 12.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0l-.396-.396zM0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2H1zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2h14zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z" />
+                </svg>
+            </button>
+            <!-- left menu-button: ends -->
+            <!-- left menu contents: starts -->
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+                aria-labelledby="offcanvasWithBothOptionsLabel" style="width: 40%; min-width: 200px; max-width: 300px;">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+                        <!-- CalEvent logo -->CalEve
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body" style="padding: 0%;">
+                    <div class="d-flex flex-column mb-3" style="padding: 0%; height: min-content;">
+                        <!-- <div class="p-2"><a class="btn btn-primary" href="#" role="button">Home</a></div> -->
+                        <div class="p-0" style="width: 100%;">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop" style="width: 100%;">
+                                Create
+                            </button>
+
+                        </div>
+                        <div class="p-0" style="width: 100%;"><a class="btn btn-primary" href="#" role="button"
+                                style="width: 100%;">Notifications</a></div>
+                        <div class="p-0" style="width: 100%;">
+                            <select class="btn btn-primary" id="list" onchange="window.location.href=this.value"
+                                style="width: 100%;">
+                                <option style="width: 100%;"
+                                    value="file:///C:/My%20Files/Projects/iitisoc%20project/day/index.html">
+                                    DAY
+                                </option>
+                                <option style="width: 100%;"
+                                    value="file:///C:/My%20Files/Projects/iitisoc%20project/week/index.html">
+                                    WEEK
+                                </option>
+                                <option style="width: 100%;"
+                                    value="file:///C:/My%20Files/Projects/iitisoc%20project/month/index.html">
+                                    MONTH
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div style="height: 50%;">
+                    notifications
+                </div>
+            </div>
+            <!-- left menu contents: ends -->
+            <!-- logo: starts :: centered ::animations to be added -->
+            <div class="d-flex align-items-center">
+                <!-- <div class="p-2 column" id="hover06" style=" margin:2px; margin-top: 7.5px; margin-bottom: 7.5px;">
+                    <a class="navbar-brand" href="http://127.0.0.1:5500/example/index.html#">
+                        <figure> <img src="../partials/logo.png" alt="blah" style="width: 30px; height: 30px;">CalEvent
+                        </figure>
+                    </a>
+                </div> -->
+            </div>
+            <!-- logo: ends -->
+            <!-- Event list button: starts :: right menu :: list of events :: print option -->
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                style="margin-top: 2vh; margin-bottom: 2vh;" aria-controls="offcanvasRight">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-calendar2-event" viewBox="0 0 16 16">
+                    <path d="M11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z" />
+                    <path
+                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z" />
+                    <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z" />
+                </svg>
+            </button>
+            <!-- Event list button: ends -->
+            <!-- Event list: starts :: day :: date :: event lists :: print option -->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel"
+                style="width: 40%; min-width: 200px; max-width: 300px;">
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Today's Events</h5>
+                </div>
+                <div class="offcanvas-body">
+
+
+
+                </div>
+            </div>
+            <!-- Event list: ends -->
+        </div>
+        <!-- navbar: ends -->
+        <hr style="margin: 0px; margin-left: 1%; margin-right: 1%;">
+        <!-- live clock: starts -->
+        <div class="clockdate-wrapper" id="clockdate" style="margin-right: 1%; padding: 0.1%; display: block;">
+            <div id="date"></div>
+            <div id="clock"></div>
+        </div>
+        <!-- live clock: ends -->
+
+        <!-- Create An Event Form-->
+
+        <div class="modal fade mh-50" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Create an Event</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body mh-50">
+                        <form class="row g-3" method="post" jsaction="/day">
+                            <!-- Event name ka input idhar se lena he -->
+                            <div class="col-md-6 form-floating" style="padding-right: 0px;">
+                                <input type="text" class="form-control" id="floatingInput"
+                                    placeholder="name@example.com" name="eventname">
+                                <label for="floatingInput">Event Name</label>
+                            </div>
+                            <!-- Event name: ends -->
+                            <!-- Event type: starts :: select ki jagah dropdown bhi use kar sakte hai -->
+                            <!-- aditi ko puch lena agar change karna ho toh -->
+                            <div class="col-md-6" style="padding-right: 0px;">
+                                <!-- <select class="form-select" aria-label="Default select example">
+
+                                <option selected i>Multiple</option>
+                                <option value="1">One-on-One</option>
+
+                            </select> -->
+                                <input list="ice-cream-flavors" id="ice-cream-choice" name="event_type">
+                                <datalist id="ice-cream-flavors">
+                                    <option value="Multiple">
+                                    <option value="One-on-One" selected>
+
+                                </datalist>
+
+                            </div>
+                            <!-- Event type: ends -->
+                            <!-- Description box: starts -->
+                            <div class="col-12" style="padding-right: 0px;">
+                                <label for="inputAddress" class="form-label">Description</label>
+                                <input type="text" class="form-control" id="inputAddress" name="description">
+                            </div>
+                            <!-- Description: ends -->
+                            <!-- event ki start date -->
+                            <div class="col-md-5 date" style="padding-right: 0px;">
+                                <label for="inputCity" class="form-label"> Start Date</label>
+                                <input type="date" id="date" class="form-control" style="color: black;"
+                                    name="calanderdate1">
+                            </div>
+                            <!-- event start date: ends -->
+                            <!-- event ki end date :: make sure ki end date is later or same as start date -->
+                            <div class="col-md-5 date" style="padding-right: 0px;">
+                                <label for="inputCity" class="form-label">End Date</label>
+                                <input type="date" id="date" class="form-control" style="color: black;"
+                                    name="calanderdate2">
+                            </div>
+                            <!-- end start: ends -->
+                            <!-- start time: starts -->
+                            <div class="col-md-5 time" style="padding-right: 0px; padding: 0; padding-left: 8px;">
+                                <label for="inputCity" class="form-label">start time</label>
+                                <input type="time" id="time" class="form-control"
+                                    style="color: black; padding-right: 0px; padding: 0; padding-left: 8px; width: auto;"
+                                    name="time1">
+                            </div>
+                            <!-- start time: ends -->
+                            <!-- end time: starts -->
+                            <div class="col-md-5 time" style="padding-right: 0px; padding: 0; padding-left: 8px;">
+                                <label for="inputCity" class="form-label">end time</label>
+                                <input type="time" id="time" class="form-control"
+                                    style="color: black; padding-right: 0px; padding: 0; padding-left: 8px; width: auto;"
+                                    name="time2">
+                            </div>
+                            <!-- end time: ends -->
+                            <div class="col-12" style="padding-right: 0px;">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                                    <label class="form-check-label" for="gridCheck">
+                                        Send me a Reminder
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <!-- Create button: starts -->
+                                <button type="submit" class="btn btn-primary">Create</button>
+                                <!-- Create button: ends -->
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Create Form: ends -->
+
+        <script src="clock.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+            </script>
+
+    </body>
+
+</html>

@@ -1,5 +1,4 @@
-
-.event_form{
+.event_form {
     /* border: 1px black solid; */
     /* width: 30%; */
     width: 100%;
@@ -11,49 +10,45 @@
     align-items: center;
 }
 
-form{
+form {
     padding: 20px;
     border: 2px black solid;
 }
 
-.event_name{
+.event_name {
     margin: 20px 0;
     margin-bottom: 10px;
 }
 
-.event_name input{
+.event_name input {
     border: transparent;
     font-size: x-large;
 }
 
-.date_time{
+.date_time {
     margin: 20px 20px;
     margin-left: 0;
     display: flex;
 }
 
-.date_time input{
+.date_time input {
     margin: 10px 0;
     margin-right: 20px;
 }
 
-.time input{
-    margin: 10px 5px;
-}
-
-
-textarea{
+textarea {
     resize: none;
     width: 300px;
     height: 100px;
     margin: 20px 0;
 }
 
-.add_guest{
+.add_guest {
     margin: 20px 0;
 }
 
-.add_guest input{
+.add_guest input {
     border: transparent;
-    font-size: large;;
+    font-size: large;
+    ;
 }

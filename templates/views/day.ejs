@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Day</title>
+        <link rel="stylesheet" href="css/day.css">
+        <script src="https://kit.fontawesome.com/16b8733e74.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <%- include("../partials/navbar"); %>
+            <div class="container">
+                <i class="fas fa-angle-left prev fa-2x"></i>
+                <div class="date">
+                    <h1></h1>
+                </div>
+                <div class="day">
+                    <h1></h1>
+                </div>
+                <div class="year">
+                    <h1></h1>
+                </div>
+                <i class="fas fa-angle-right next fa-2x"></i>
+            </div>
+
+            <div class="all_events">
+                <% createEvent.forEach(function(harsh){%>
+                    <div class="day_event">
+                        <div class="title">
+                            <p> EVENT-NAME : <%= harsh.eventname %>
+                            </p>
+                        </div>
+                        <div class="time_of_event">
+                            <div class="start-time">From : </div>
+                            <div class="start_time_1">
+                                <%= harsh.time1 %> to
+                            </div>
+
+                            <div class="end-time">
+                                <%= harsh.time2 %>
+                            </div>
+                        </div>
+                        <div class="type_of_event">
+                            <div class="type_of_event_1">Type_of_Event :</div>
+                            <div class="type_of_event_2">
+                                <%= harsh.event_type%>
+                            </div>
+                        </div>
+                        <div class="description_of_event">
+                            <div class="description_1">Description : </div>
+                            <div class="description_2">
+                                <%= harsh.description %>
+                            </div>
+                        </div>
+                        <div class="meet_link"><i class="fa-solid fa-link"></i><a href="#">link</a></div>
+                    </div>
+                    <%})%>
+            </div>
+
+            <style>
+                body {
+                    background-color: #ecf6fb;
+
+                }
+
+                .container {
+                    width: 100%;
+                    height: 5%;
+                    display: flex;
+                    margin-left: 1%;
+                }
+
+                .container i {
+                    margin: 2%;
+                }
+
+                .date,
+                .day,
+                .year {
+                    margin: 0.8% 0.5%;
+                }
+
+                .day_event {
+                    width: 300px;
+                    height: 250px;
+                    border: 1.5px black solid;
+                    border-top: 5px rgb(66, 18, 170) solid;
+                    /* padding: 0 8px; */
+                    display: flex;
+                    flex-wrap: wrap;
+                    border-radius: 30px;
+                    margin: 1%;
+                    border-top: transparent;
+                    /* margin-right: 0; */
+                }
+
+                .title {
+                    padding: 0;
+                    background-color: rgb(66, 18, 170);
+                    color: whitesmoke;
+                    /* display: flex; */
+                    margin: 0;
+                    width: 300px;
+                    height: 40px;
+                    display: block;
+                    border-radius: 30px 30px 0 0;
+                    border-top: transparent;
+                }
+
+                .title p {
+                    margin: 0;
+                    padding: 5px 10px;
+                    text-transform: capitalize;
+                }
+
+                .time_of_event {
+                    display: flex;
+                    width: 300px;
+                }
+
+                .type_of_event {
+                    width: 95%;
+                    display: flex;
+                    margin: 0 2.5%;
+                    font-weight: 500;
+                }
+
+                .type_of_event_1 {
+                    width: 43%;
+                    font-weight: 680;
+                }
+
+                .type_of_event_2 {
+                    font-weight: 500;
+                }
+
+                .description_of_event {
+                    width: 95%;
+                    display: flex;
+                    margin: 0 2.5%;
+                    font-weight: 500;
+                }
+
+                .description_of_event p {
+                    text-transform: capitalize;
+                }
+
+                .description_1 {
+                    width: 35%;
+                    font-weight: 680;
+                }
+
+                .description_2 {
+                    font-weight: 500;
+                    text-transform: capitalize;
+                }
+
+                .time_of_event {
+                    width: 95%;
+                    margin: 0 2.5%;
+                    font-weight: 680;
+                }
+
+                .start-time {
+                    width: 22%;
+                }
+
+                .start_time_1,
+                .end-time {
+                    width: 22%;
+                    font-weight: 500;
+                    color: #03045e;
+                }
+
+                .time_limit {
+                    width: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .meet_link {
+                    width: 90%;
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+
+                }
+
+                .all_events {
+                    width: 94%;
+                    display: grid;
+                    justify-content: space-evenly;
+                    align-items: flex-start;
+                    gap: 1rem;
+                    margin: 3%;
+                }
+
+
+
+
+
+                @media (min-width: 600px) {
+                    .all_events {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+
+                    @media (min-width: 900px) {
+                        .all_events {
+                            grid-template-columns: repeat(3, 1fr);
+                            display: grid;
+                            justify-content: space-evenly;
+
+                        }
+
+                    }
+
+                    @media (min-width: 1200px) {
+                        .all_events {
+                            grid-template-columns: repeat(4, 1fr);
+                        }
+                    }
+
+
+                }
+            </style>
+
+            <script>
+                const date = new Date();
+
+                let now = new Date();
+                const noOfDaysInTheMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+
+                const renderCalendar = () => {
+
+
+
+                    const months = [
+                        "Jan",
+                        "Feb",
+                        "Mar",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "Aug",
+                        "Sept",
+                        "Oct",
+                        "Nov",
+                        "Dec",
+                    ];
+                    document.querySelector(".date h1").innerHTML = date.getDate();
+                    document.querySelector(".day h1").innerHTML = months[date.getMonth()];
+                    document.querySelector(".year h1").innerHTML = date.getFullYear();
+
+
+                };
+
+                document.querySelector(".prev").addEventListener("click", () => {
+                    if (date.getDate() >= 1) {
+                        date.setDate(date.getDate() - 1);
+                        0
+                    }
+                    else if (date.getDate === 1) {
+                        date.setDate(30);
+                        date.setMonth(date.getMonth() - 1);
+                        0
+                    }
+                    renderCalendar();
+                });
+
+                document.querySelector(".next").addEventListener("click", () => {
+                    if (date.getDate() < noOfDaysInTheMonth) {
+                        date.setDate(date.getDate() + 1);
+                        0
+                    }
+                    else if (date.getDate() === noOfDaysInTheMonth) {
+                        date.setDate(1);
+                        date.setMonth(date.getMonth() + 1);
+                        0
+                    }
+                    renderCalendar();
+
+                });
+
+                renderCalendar();
+
+            </script>
+
+            <%- include("../partials/footer"); %>
+    </body>
+
+</html>
