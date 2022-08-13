@@ -3,7 +3,7 @@ const path = require("path");    //importing path
 const ejs = require("ejs");             //importing hbs
 const mongoose = require("mongoose");             //importing hbs
 const bodyParser = require("body-parser");             //importing hbs
-const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser'); //importing cookie-parser
 const passport = require('passport');
 const GoogleStratergy = require('passport-google-oauth20');
 mongoose.Promise = global.Promise;
@@ -76,7 +76,7 @@ app.get("/", (req, res) => {          //home page pe jo bhi request ayegi vo yah
     var currentday = ourdate.getMonth() + 1;
 
     User.find({}, function (err, value) {
-        res.render("index", { createEvent: value });
+        res.render("login", { createEvent: value });
 
     });
 
